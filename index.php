@@ -6,7 +6,7 @@
   // Start output buffering (trap the output instead of displaying it)
   ob_start();
 
-  // Include the page-specific template/content
+  // Include the page-specific template/content - CHANGE THIS 🍌🍌🍌
   include_once "templates/_indexPage.html.php";
 
   // Stop output buffering (store output in $content variable)
