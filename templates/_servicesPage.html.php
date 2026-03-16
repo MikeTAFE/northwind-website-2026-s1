@@ -10,8 +10,8 @@
 
   <dl class="service-list">
   <?php foreach($services as $serviceName => $serviceDesc): ?>
-    <dt><?= $serviceName ?></dt>
-    <dd><?= $serviceDesc ?></dd>
+    <dt><?= htmlspecialchars($serviceName) ?></dt>
+    <dd><?= htmlspecialchars($serviceDesc) ?></dd>
   <?php endforeach ?>
   </dl>
 
