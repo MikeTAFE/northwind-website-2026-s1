@@ -6,6 +6,7 @@
     "index.php" => "Home",
     "about.php" => "About us",
     "services.php" => "Our services",
+    "register.php" => "Register",
   ];
 
   // Get the currently-loaded page (PHP script), e.g. index.php
