@@ -2,7 +2,18 @@
 
 <p>Fill out the registration form to receive great things.</p>
 
-<form action="register.php" method="post">
+<!-- Error summary ($errors) -->
+<?php if (!empty($errors)): ?>
+  <div class="error-summary">
+    <ul>
+      <?php foreach ($errors as $error): ?>
+        <li><?= $error ?></li>
+      <?php endforeach ?>
+    </ul>
+  </div>
+<?php endif ?>
+
+<form action="register.php" method="post" novalidate>
   <fieldset>
     <legend>Personal information</legend>
 
@@ -14,6 +25,9 @@
     <div class="form-row">
       <label for="lastName">Last name*:</label>
       <input type="text" id="lastName" name="lastName" required>
+      <?php if (isset($errors["lastName"])): ?>
+        <span class="error-message"><?= $errors["lastName"] ?></span>
+      <?php endif ?>
     </div>
 
     <div class="form-row">
