@@ -2,16 +2,7 @@
 
 <p>Fill out the registration form to receive great things.</p>
 
-<!-- Error summary ($errors) -->
-<?php if (!empty($errors)): ?>
-  <div class="error-summary">
-    <ul>
-      <?php foreach ($errors as $error): ?>
-        <li><?= $error ?></li>
-      <?php endforeach ?>
-    </ul>
-  </div>
-<?php endif ?>
+<?php include "_errorSummary.html.php" ?>
 
 <form action="register.php" method="post" novalidate>
   <fieldset>
