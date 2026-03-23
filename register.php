@@ -33,12 +33,38 @@
     // TODO: Normalise/sanitise data
     $firstName = trim($firstName);
 
-    // TODO: Validate fields...
+    // Validate fields...
+
+    // Validate first name
     if ($firstName === "") {
       $errors["firstName"] = "First name is required";
     } else if (strlen($firstName) < 2) {
       $errors["firstName"] = "First name must be 2+ characters";
     }
+
+    // Validate last name
+    if ($lastName === "") {
+      $errors["lastName"] = "Last name is required";
+    } else if (strlen($lastName) < 2 || strlen($lastName) > 50) {
+      $errors["lastName"] = "Last name must be 2-50 characters";
+    }
+
+    // Validate email
+    if ($email === "") {
+      $errors["email"] = "Email is required";
+    }
+    // Email pattern match
+    else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errors["email"] = "Invalid email pattern";
+    }
+
+    // Validate passwords
+    if (strlen($password1) < 10) {
+      $errors["password1"] = "Password must be 10+ characters";
+    } else if ($password2 !== $password1) {
+      $errors["password2"] = "Passwords don't match";
+    }
+
 
     // Check for errors (invalid data)
     if (count($errors) > 0) {
