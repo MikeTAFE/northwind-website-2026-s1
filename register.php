@@ -80,6 +80,12 @@
       // Valid - display confirmation (save to DB, send email, etc...)
       include_once "templates/_registerConfirmation.html.php";
 
+      // OPTIONAL: Redirect to another page
+      // Remember the exit with the "Location" header!
+      // If you want to pass data to the redirected page, use a query string (?firstName=Mike) or the $_SESSION array
+      // header("Location: someConfirmationPage.php");
+      // exit;
+
     }
 
   } else {
