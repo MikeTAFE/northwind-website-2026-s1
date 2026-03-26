@@ -48,40 +48,40 @@
     <div class="form-row">
       <label for="course">Course*:</label>
       <select id="course" name="course">
-        <option value="c4-web">Cert 4 Web Design</option>
-        <option value="c4-prog">Cert 4 Programming</option>
-        <option value="dip-web">Diploma Web Development</option>
-        <option value="dip-prog">Diploma Advanced Programming</option>
+        <option value="c4-web" <?= setSelected("course", "c4-web") ?>>Cert 4 Web Design</option>
+        <option value="c4-prog" <?= setSelected("course", "c4-prog") ?>>Cert 4 Programming</option>
+        <option value="dip-web" <?= setSelected("course", "dip-web") ?>>Diploma Web Development</option>
+        <option value="dip-prog" <?= setSelected("course", "dip-prog") ?>>Diploma Advanced Programming</option>
       </select>
     </div>
 
     <div class="form-row">
       <p>Enrolment mode*:</p>
       <label>
-        <input type="radio" name="enrolmentMode" value="ft">
+        <input type="radio" name="enrolmentMode" value="ft" <?= setChecked("enrolmentMode", "ft") ?>>
         Full-time
       </label>
       <label>
-        <input type="radio" name="enrolmentMode" value="pt">
+        <input type="radio" name="enrolmentMode" value="pt" <?= setChecked("enrolmentMode", "pt") ?>>
         Part-time
       </label>
     </div>
 
     <div class="form-row">
       <label>
-        <input type="checkbox" name="newsletter" value="monkeyslovemebecauseismelllikebananas">
+        <input type="checkbox" name="newsletter" value="yes" <?= setChecked("newsletter", "yes") ?>>
         Sign up to our newsletter?!
       </label>
     </div>
 
     <div class="form-row">
       <label for="comments">Any comments?:</label>
-      <textarea id="comments" name="comments" cols="30" rows="4"></textarea>
+      <textarea id="comments" name="comments" cols="30" rows="4"><?= getEncodedValue("comments") ?></textarea>
     </div>
 
     <div class="form-row">
       <label>
-        <input type="checkbox" name="terms" value="i-agree-to-all-things" required>
+        <input type="checkbox" name="terms" value="i-agree-to-all-things" required <?= setChecked("terms", "i-agree-to-all-things") ?>>
         Agree to terms &amp; conditions*
       </label>
     </div>
