@@ -16,3 +16,14 @@
   // include_once INCLUDES_DIR . "formHelpers.php";
 
 
+
+  /**
+   * Escape a value for safe usage in HTML. (Wrapper for htmlspecialchars().)
+   *
+   * @param string|integer $valueToEscape The value to escape.
+   * @return string An HTML-encoded value.
+   */
+  function esc(string|int $valueToEscape): string
+  {
+    return htmlspecialchars($valueToEscape, ENT_QUOTES, "UTF-8");
+  }
