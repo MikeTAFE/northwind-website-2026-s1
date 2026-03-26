@@ -20,6 +20,7 @@
     <div class="form-row">
       <label for="firstName">First name*:</label>
       <input type="text" id="firstName" name="firstName" required <?= fieldValue("firstName") ?>>
+      <?= fieldError($errors, "firstName") ?>
     </div>
 
     <div class="form-row">
@@ -33,16 +34,19 @@
     <div class="form-row">
       <label for="email">Email*:</label>
       <input type="email" id="email" name="email" placeholder="name@email.com" required <?= fieldValue("email") ?>>
+      <?= fieldError($errors, "email") ?>
     </div>
 
     <div class="form-row">
       <label for="password1">Password*:</label>
       <input type="password" id="password1" name="password1" required <?= fieldValue("password1") ?>>
+      <?= fieldError($errors, "password1") ?>
     </div>
 
     <div class="form-row">
       <label for="password2">Re-type password*:</label>
       <input type="password" id="password2" name="password2" required <?= fieldValue("password2") ?>>
+      <?= fieldError($errors, "password2") ?>
     </div>
 
     <div class="form-row">
@@ -53,10 +57,11 @@
         <option value="dip-web" <?= setSelected("course", "dip-web") ?>>Diploma Web Development</option>
         <option value="dip-prog" <?= setSelected("course", "dip-prog") ?>>Diploma Advanced Programming</option>
       </select>
+      <?= fieldError($errors, "course") ?>
     </div>
 
     <div class="form-row">
-      <p>Enrolment mode*:</p>
+      <p>Enrolment mode*: <?= fieldError($errors, "enrolmentMode") ?></p>
       <label>
         <input type="radio" name="enrolmentMode" value="ft" <?= setChecked("enrolmentMode", "ft") ?>>
         Full-time
@@ -76,6 +81,7 @@
 
     <div class="form-row">
       <label for="comments">Any comments?:</label>
+      <?= fieldError($errors, "comments") ?>
       <textarea id="comments" name="comments" cols="30" rows="4"><?= getEncodedValue("comments") ?></textarea>
     </div>
 

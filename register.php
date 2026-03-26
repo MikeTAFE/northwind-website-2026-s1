@@ -9,13 +9,13 @@
   // Start output buffering (trap the output instead of displaying it)
   ob_start();
 
+  // Collection of all errors for this submission (empty by default)
+  $errors = [];
+
   // Check if form has been submitted
   if (isset($_POST['submitRegister'])) {
 
     // Form has been submitted - process data
-
-    // Collection of all errors for this submission (empty by default)
-    $errors = [];
 
     // TESTING - manually add errors
     // $errors["firstName"] = "First name is required";

@@ -70,3 +70,14 @@
     return ($_POST[$fieldName] ?? null) === $fieldValue ? "selected" : "";
   }
 
+
+  function fieldError(array $errors, string $fieldName)
+  {
+    // Return empty if no error
+    if (empty($errors[$fieldName])) return "";
+
+    // Return an inline error message
+    return <<<HTML
+    <span class="error-message">{$errors[$fieldName]}</span>
+    HTML;
+  }
