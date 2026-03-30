@@ -81,6 +81,17 @@
 
       // Send email (via Resend)
       try {
+
+        // Encode values safely for output in HTML (email content and confirmation page)
+        $firstName = esc($firstName);
+        $lastName = esc($lastName);
+        $email = esc($email);
+        $course = esc($course);
+        $comments = esc($comments);
+
+        // Define other email data
+        $htmlEnrolmentMode = $enrolmentMode === "ft" ? "Full-time" : "Part-time";
+        $htmlNewsletter = $newsletterChecked ? "Yes" : "No";
         
         // Try to send an email via Resend's API
         $resend = Resend::client(RESEND_API_KEY);
@@ -96,7 +107,8 @@
             <li>Last Name: $lastName</li>
             <li>Email: $email</li>
             <li>Course: $course</li>
-            <li>Enrolment Mode: $enrolmentMode</li>
+            <li>Enrolment Mode: $htmlEnrolmentMode</li>
+            <li>Newsletter: $htmlNewsletter</li>
             <li>Comments: $comments</li>
           </ul>
           HTML,
