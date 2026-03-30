@@ -78,14 +78,50 @@
     } else {
 
       // Valid - display confirmation (save to DB, send email, etc...)
-      include_once "templates/_registerConfirmation.html.php";
 
-      // OPTIONAL: Redirect to another page
-      // Remember the exit with the "Location" header!
-      // If you want to pass data to the redirected page, use a query string (?firstName=Mike) or the $_SESSION array
-      // header("Location: someConfirmationPage.php");
-      // exit;
+      // Send email (via Resend)
+      try {
+        
+        // Try to send an email via Resend's API
+        $resend = Resend::client(RESEND_API_KEY);
+        $resend->emails->send([
+          'from' => 'Northwind Website <website@hornsbytafe.com>',
+          'to' => ['michael.kirkwood-smith3@tafensw.edu.au'],
+          'subject' => 'Northwind Website Registration Submission',
+          'html' => <<<HTML
+          <h1>Northwind Website registration form submission</h1>
+          <p>Registration form submitted...</p>
+          <ul>
+            <li>First Name: $firstName</li>
+            <li>Last Name: $lastName</li>
+            <li>Email: $email</li>
+            <li>Course: $course</li>
+            <li>Enrolment Mode: $enrolmentMode</li>
+            <li>Comments: $comments</li>
+          </ul>
+          HTML,
+        ]);
 
+        // Email was sent successfully!
+
+        // Display confirmation page
+        include_once "templates/_registerConfirmation.html.php";
+
+        // OPTIONAL: Redirect to another page
+        // Remember the exit with the "Location" header!
+        // If you want to pass data to the redirected page, use a query string (?firstName=Mike) or the $_SESSION array
+        // header("Location: someConfirmationPage.php");
+        // exit;
+
+      } catch (Exception $e) {
+        
+        // Error - email was NOT sent
+
+        // Invalid - re-display form with errors
+        $errors["resend"] = "Email could not be sent: " . $e->getMessage();
+        include_once "templates/_registerPage.html.php";
+
+      }
     }
 
   } else {
