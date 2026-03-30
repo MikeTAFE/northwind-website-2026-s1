@@ -12,6 +12,15 @@ If you're in the course and are wanting to "gain inspiration" from this code, yo
 3. Clone the entire repo to your computer using `git clone https://github.com/MikeTAFE/northwind-website-2026-s1.git` from the directory where you want to download to.
 
 
+## Secrets
+
+Make sure you create the `/includes/secrets.php` file that holds API keys and other secrets, which is **not** tracked in this Git repo. You will need to manually create the file yourself and ensure that values are defined as needed.
+
+```php
+define("SENDGRID_API_KEY", "xyz");
+```
+
+
 ## Sample Markdown
 
 * Item 1
